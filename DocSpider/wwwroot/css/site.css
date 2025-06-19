@@ -1,0 +1,293 @@
+﻿body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #212529;
+    overflow-x: hidden;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* NAVBAR GRADIENTE FIXA */
+.top-navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 56px !important;
+    background: linear-gradient(to right, #00264d, #0057a0) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1020 !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.top-navbar .container-fluid {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 56px !important;
+    width: 100% !important;
+    padding: 0 1rem !important;
+    margin: 0 !important;
+    max-width: none !important;
+}
+
+.top-navbar .navbar-brand,
+.top-navbar .navbar-nav .nav-link {
+    color: #fff;
+}
+.top-navbar .navbar-brand:hover,
+.top-navbar .navbar-nav .nav-link:hover {
+    color: #cce6ff;
+}
+
+.navbar-brand img {
+    height: 200px;
+    margin-top:10px;
+    width: auto; 
+    transition: all 0.3s; 
+}
+
+/* LAYOUT */
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+/* SIDEBAR */
+#sidebar {
+    background: #343a40;
+    color: white;
+    width: 250px;
+    min-height: 100vh;
+    position: fixed;
+    top: 56px; /* abaixo da navbar */
+    left: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #2c3e50;
+}
+#sidebar ul.components {
+    padding: 20px 0;
+    margin: 0;
+}
+#sidebar ul li a {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+#sidebar ul li a:hover {
+    color: #fff;
+    background: #2c3e50;
+    text-decoration: none;
+}
+#sidebar ul li.active > a {
+    color: #fff;
+    background: #007bff;
+}
+
+/* CONTEÚDO PRINCIPAL */
+#content {
+    width: 100%;
+    margin-left: 250px;
+    transition: all 0.3s ease;
+}
+#content .container-fluid {
+    padding: 24px;
+    padding-top: 80px; /* compensar navbar fixa */
+}
+
+#sidebarCollapse {
+    background: transparent !important;
+    border: none !important;
+    font-size: 24px !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    width: 40px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-right: 12px !important;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    vertical-align: middle !important;
+}
+
+#sidebarCollapse:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#sidebarCollapse:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand img {
+    margin-right: 8px;
+}
+
+/* SIDEBAR OCULTO */
+#sidebar.active {
+    margin-left: -250px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    #sidebar {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 56px;
+        left: 0;
+    }
+    #sidebar.active {
+        display: none;
+    }
+    #content {
+        margin-left: 0;
+    }
+    #content .container-fluid {
+        padding-top: 80px;
+    }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .top-navbar {
+        position: fixed !important;
+        top: 0 !important;
+        height: 80px !important; 
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    .top-navbar .container-fluid {
+        height: 80px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 0 1rem !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    #sidebarCollapse {
+        height: 44px !important;
+        width: 44px !important;
+        font-size: 22px !important;
+        margin-right: 20px !important; 
+        flex-shrink: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+ 
+    .navbar-brand {
+        display: flex !important;
+        align-items: center !important;
+        height: 80px !important; 
+        margin: 0 !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .navbar-brand img {
+        height: 180px !important; 
+        width: auto !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        margin-right: -15px !important;
+        vertical-align: middle !important;
+    }
+    
+    #sidebar {
+        position: absolute;
+        width: 280px !important; 
+        height: auto;
+        top: 80px; 
+        left: 0;
+        max-width: 85vw; 
+    }
+    #sidebar.active {
+        display: none;
+    }
+    #content {
+        margin-left: 0;
+    }
+    #content .container-fluid {
+        padding-top: 100px; 
+    }
+}
+
+/* Para tablets e telas médias */
+@media (min-width: 769px) and (max-width: 991px) {
+    .top-navbar {
+        height: 80px !important; 
+    }
+    
+    .top-navbar .container-fluid {
+        height: 80px !important;
+        padding: 0 1rem !important;
+    }
+    
+    #sidebarCollapse {
+        height: 42px !important;
+        width: 42px !important;
+        margin-right: 15px !important;
+    }
+    
+    .navbar-brand {
+        height: 80px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    .navbar-brand img {
+        height: 180px !important; 
+        margin-right: -15px !important;
+    }
+    
+    #sidebar {
+        top: 80px; 
+    }
+    
+    #content .container-fluid {
+        padding-top: 100px; 
+    }
+}

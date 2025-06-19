@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DocSpider</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="active">
+
+            <ul class="list-unstyled components">
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                    <a href="/">
+                        <i class="bi bi-house"></i>
+                        <span class="menu-text">Home</span>
+                    </a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Documentos" ? "active" : "")">
+                    <a href="/Documentos">
+                        <i class="bi bi-folder"></i>
+                        <span class="menu-text">Meus Documentos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#sobreModal">
+                        <i class="bi bi-info-circle"></i>
+                        <span class="menu-text">Sobre</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar top-navbar navbar-expand-lg">
+                <div class="container-fluid d-flex align-items-center">
+                    <div class="d-flex align-items-center">
+                        <button type="button" id="sidebarCollapse" class="btn btn-light me-2">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <a class="navbar-brand d-flex align-items-center" href="#">
+                            <img src="~/images/logo-mini.png" alt="DocSpider" height="30" class="me-2" />
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!-- Sobre Modal -->
+    <div class="modal fade" id="sobreModal" tabindex="-1" role="dialog" aria-labelledby="sobreModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sobreModalLabel">Sobre o DocSpider</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="~/images/logo.png" alt="DocSpider Logo" class="img-fluid mb-3" style="max-height: 100px;">
+                    <h4>DOCSPIDER SOFTWARE S.A.</h4>
+                    <p>Versão 2.1.0</p>
+                    <hr>
+                    <p><strong>CNPJ:</strong> 83.065.805/0001-40</p>
+                    <p><strong>Matriz:</strong> Rua Doutor Plácido Gomes, 610 - 4° Andar - CEP: 89202-050 - Joinville - SC</p>
+                    <p><strong>Telefones:</strong></p>
+                    <p>Joinville: ✆ (47) 3121-5050</p>
+                    <p>São Paulo: ✆ (11) 4052-7052</p>
+                    <p>Rio de Janeiro: ✆ (21) 4052-7052</p>
+                    <p>Brasília: ✆ (61) 4052-7052</p>
+                    <p>Fortaleza: ✆ (85) 3108-7052</p>
+                    <p><strong>Site:</strong> www.docspider.com.br</p>
+                    <p><strong>Email:</strong> docspider@docspider.com.br</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

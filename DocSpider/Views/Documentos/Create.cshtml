@@ -1,0 +1,63 @@
+﻿@model DocSpider.Models.Documento
+
+@{
+    ViewData["Title"] = "Novo Documento";
+}
+
+<h1>Novo Documento</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <textarea asp-for="Descricao" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Arquivo</label>
+                <div class="custom-file">
+                    <input asp-for="ArquivoUpload" class="custom-file-input" required>
+                    <label class="custom-file-label" for="arquivo">Escolha o arquivo...</label>
+                    <small class="form-text text-muted">Formatos permitidos: PDF, DOC, DOCX, XLS, XLSX, TXT</small>
+                    <span class="text-danger" id="arquivoError"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on('change', function () {
+                var fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').html(fileName);
+
+                // Validação de extensão
+                var allowedExtensions = /(\.pdf|\.doc|\.docx|\.xls|\.xlsx|\.txt)$/i;
+                if (!allowedExtensions.exec(fileName)) {
+                    $('#arquivoError').text('Tipo de arquivo não permitido. Por favor, envie apenas documentos.');
+                    $(this).val('');
+                    $(this).next('.custom-file-label').html('Escolha o arquivo...');
+                } else {
+                    $('#arquivoError').text('');
+                }
+            });
+        });
+    </script>
+}
